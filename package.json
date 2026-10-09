@@ -4,5 +4,27 @@
     "cors": "^2.8.6",
     "dotenv": "^18.0.6",
     "express": "^5.3.0"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "name": "atividade-01-reconstrucao-da-api-e-introducao-a-sqlite-urciano-beatriz-e-anthonny",
+  "version": "1.0.0",
+  "description": "projeto: geek store\r Equipe: Anthonny, Beatriz e Urciano",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonnydosSantos/Atividade-01-Reconstrucao-da-API-e-Introducao-a-SQLite-urciano-beatriz-e-anthonny.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/AnthonnydosSantos/Atividade-01-Reconstrucao-da-API-e-Introducao-a-SQLite-urciano-beatriz-e-anthonny/issues"
+  },
+  "homepage": "https://github.com/AnthonnydosSantos/Atividade-01-Reconstrucao-da-API-e-Introducao-a-SQLite-urciano-beatriz-e-anthonny#readme"
 }
