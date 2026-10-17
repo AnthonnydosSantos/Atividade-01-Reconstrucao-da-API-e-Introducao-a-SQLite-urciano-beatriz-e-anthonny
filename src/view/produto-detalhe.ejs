@@ -1,0 +1,67 @@
+
+<%- include("partial/header", { title: produto.nome }) %>
+
+<a href="/produtos">← Voltar ao catálogo</a>
+
+<section class="detail">
+    <div class="detail-photo">
+        🎁
+    </div>
+
+    <div>
+        <p class="tag">
+            <%= produto.categoria_nome || "Colecionáveis Geek" %>
+        </p>
+
+        <h1><%= produto.nome %></h1>
+
+        <p>
+            <%= produto.descricao || "Um item especial para sua coleção." %>
+        </p>
+
+        <p class="price big">
+            R$ <%= Number(produto.preco || 0)
+                .toFixed(2)
+                .replace(".", ",") %>
+        </p>
+
+        <p class="muted">
+            Estoque:
+            <%= produto.estoque ?? "Consulte disponibilidade" %>
+        </p>
+
+        <% if (Number(produto.estoque) > 0) { %>
+            <form
+                action="/carrinho/adicionar"
+                method="POST"
+                class="buy"
+            >
+                <input
+                    type="hidden"
+                    name="produto_id"
+                    value="<%= produto.id %>"
+                >
+
+                <label>
+                    Quantidade
+                    <input
+                        type="number"
+                        name="quantidade"
+                        min="1"
+                        max="<%= produto.estoque %>"
+                        value="1"
+                        required
+                    >
+                </label>
+
+                <button type="submit" class="btn">
+                    Adicionar ao carrinho
+                </button>
+            </form>
+        <% } else { %>
+            <p class="alert">Produto indisponível no momento.</p>
+        <% } %>
+    </div>
+</section>
+
+<%- include("partial/footer") %>

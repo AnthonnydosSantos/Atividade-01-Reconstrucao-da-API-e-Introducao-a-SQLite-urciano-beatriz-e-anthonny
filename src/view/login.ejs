@@ -1,0 +1,43 @@
+
+<%- include("partial/header", { title: "Entrar" }) %>
+
+<section class="form-card">
+    <p class="tag">BEM-VINDO DE VOLTA</p>
+
+    <h1>Entrar na conta</h1>
+
+    <% if (erro) { %>
+        <p class="alert"><%= erro %></p>
+    <% } %>
+
+    <form action="/login" method="POST" class="form">
+        <label>
+            E-mail
+            <input
+                type="email"
+                name="email"
+                placeholder="seu@email.com"
+                required
+            >
+        </label>
+
+        <label>
+            Senha
+            <input
+                type="password"
+                name="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+        </label>
+
+        <button type="submit" class="btn">Entrar</button>
+    </form>
+
+    <p>
+        Ainda não tem conta?
+        <a href="/cadastro">Cadastre-se</a>.
+    </p>
+</section>
+
+<%- include("partial/footer") %>

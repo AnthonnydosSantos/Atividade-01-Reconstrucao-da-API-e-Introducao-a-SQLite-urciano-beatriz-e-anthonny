@@ -1,0 +1,67 @@
+
+<%- include("partial/header", { title: "Produtos" }) %>
+
+<section class="heading">
+    <p class="tag">CATÁLOGO</p>
+    <h1>Todos os produtos</h1>
+    <p>Figuras, acessórios, colecionáveis e muito mais.</p>
+</section>
+
+<form class="search" action="/produtos" method="GET">
+    <input
+        type="text"
+        name="busca"
+        value="<%= busca || '' %>"
+        placeholder="Buscar produto pelo nome..."
+    >
+
+    <button type="submit" class="btn">Buscar</button>
+</form>
+
+<section class="grid">
+    <% if (produtos && produtos.length > 0) { %>
+
+        <% produtos.forEach(p => { %>
+            <article class="card">
+
+                <div class="photo">
+                    🛍️
+                </div>
+
+                <div class="inside">
+                    <small>
+                        <%= p.categoria_nome || "Sem categoria" %>
+                    </small>
+
+                    <h3><%= p.nome %></h3>
+
+                    <p>
+                        <%= p.descricao || "Produto da coleção Geek Store." %>
+                    </p>
+
+                    <p class="price">
+                        R$ <%= Number(p.preco || 0)
+                            .toFixed(2)
+                            .replace(".", ",") %>
+                    </p>
+
+                    <p class="muted">
+                        Estoque: <%= p.estoque ?? "Consulte" %>
+                    </p>
+
+                    <a class="btn" href="/produtos/<%= p.id %>">
+                        Ver detalhes
+                    </a>
+                </div>
+
+            </article>
+        <% }) %>
+
+    <% } else { %>
+
+        <p class="empty">Nenhum produto encontrado.</p>
+
+    <% } %>
+</section>
+
+<%- include("partial/footer") %>

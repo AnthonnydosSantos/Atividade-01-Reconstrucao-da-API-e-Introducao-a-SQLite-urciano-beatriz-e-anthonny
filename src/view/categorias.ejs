@@ -1,0 +1,46 @@
+
+<%- include("partial/header", {title: "Categorias"}) %>
+
+<section class="heading">
+  <p class="tag">EXPLORE POR UNIVERSO</p>
+  <h1>Categorias</h1>
+  <p class="muted">
+    Encontre seus produtos favoritos organizados por categoria.
+  </p>
+</section>
+
+<section class="grid">
+  <% if (categorias && categorias.length > 0) { %>
+
+    <% categorias.forEach(categoria => { %>
+      <a
+        class="card category"
+        href="/produtos?categoria_id=<%= categoria.id %>"
+      >
+        <div class="inside">
+          <p class="tag">✦ GEEK STORE</p>
+
+          <h2><%= categoria.nome %></h2>
+
+          <p>
+            <%= categoria.descricao || "Produtos selecionados desta categoria." %>
+          </p>
+
+          <span class="btn">Ver produtos</span>
+        </div>
+      </a>
+    <% }) %>
+
+  <% } else { %>
+
+    <div class="empty-state">
+      <p class="empty">Nenhuma categoria cadastrada.</p>
+      <p class="muted">
+        As categorias cadastradas no banco de dados aparecerão aqui.
+      </p>
+    </div>
+
+  <% } %>
+</section>
+
+<%- include("partial/footer") %>

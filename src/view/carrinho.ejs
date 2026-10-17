@@ -1,0 +1,78 @@
+
+<%- include("partial/header", {title: "Carrinho"}) %>
+
+<section class="heading">
+  <p class="tag">SUA SELEÇÃO</p>
+  <h1>Carrinho de compras</h1>
+  <p class="muted">Confira os produtos selecionados antes de finalizar.</p>
+</section>
+
+<% if (itens && itens.length > 0) { %>
+  <section class="cart">
+    <% itens.forEach(item => { %>
+      <article class="cart-item">
+        <div>
+          <h3><%= item.nome %></h3>
+
+          <p class="muted">
+            Categoria: <%= item.categoria_nome || "Sem categoria" %>
+          </p>
+
+          <p class="muted">
+            Preço unitário:
+            R$ <%= Number(item.preco || 0).toFixed(2).replace(".", ",") %>
+          </p>
+
+          <p class="muted">
+            Quantidade: <%= item.quantidade %>
+          </p>
+        </div>
+
+        <strong class="price">
+          R$
+          <%= (
+            Number(item.preco || 0) *
+            Number(item.quantidade || 0)
+          ).toFixed(2).replace(".", ",") %>
+        </strong>
+
+        <form action="/carrinho/remover" method="POST">
+          <input
+            type="hidden"
+            name="produto_id"
+            value="<%= item.id %>"
+          >
+
+          <button type="submit" class="remove">
+            Remover
+          </button>
+        </form>
+      </article>
+    <% }) %>
+  </section>
+
+  <section class="cart-summary">
+    <p class="total">
+      Total:
+      R$ <%= Number(total || 0).toFixed(2).replace(".", ",") %>
+    </p>
+
+    <form action="/finalizar-compra" method="POST">
+      <button type="submit" class="btn">
+        Finalizar compra
+      </button>
+    </form>
+
+    <p class="muted">
+      O pedido será registrado após a implementação da finalização da compra.
+    </p>
+  </section>
+
+<% } else { %>
+  <section class="empty-state">
+    <p class="empty">Seu carrinho está vazio.</p>
+    <a class="btn" href="/produtos">Ver produtos</a>
+  </section>
+<% } %>
+
+<%- include("partial/footer") %>

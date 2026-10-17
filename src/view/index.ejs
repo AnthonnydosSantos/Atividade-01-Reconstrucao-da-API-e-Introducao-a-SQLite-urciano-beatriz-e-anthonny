@@ -1,0 +1,57 @@
+
+<%- include("partial/header", { title: "Início" }) %>
+
+<section class="hero">
+    <p class="tag">ANIME • GAMES • CULTURA GEEK</p>
+
+    <h1>Seu próximo item favorito está aqui.</h1>
+
+    <p>
+        Explore produtos, encontre sua categoria favorita
+        e monte sua coleção.
+    </p>
+
+    <a class="btn" href="/produtos">Explorar produtos</a>
+</section>
+
+<h2>Produtos em destaque</h2>
+
+<section class="grid">
+    <% if (produtos && produtos.length > 0) { %>
+
+        <% produtos.forEach(p => { %>
+            <article class="card">
+
+                <div class="photo">
+                    🎁
+                </div>
+
+                <div class="inside">
+                    <small>
+                        <%= p.categoria_nome || "Geek" %>
+                    </small>
+
+                    <h3><%= p.nome %></h3>
+
+                    <p class="price">
+                        R$ <%= Number(p.preco || 0)
+                            .toFixed(2)
+                            .replace(".", ",") %>
+                    </p>
+
+                    <a class="btn" href="/produtos/<%= p.id %>">
+                        Ver detalhes
+                    </a>
+                </div>
+
+            </article>
+        <% }) %>
+
+    <% } else { %>
+
+        <p class="empty">Nenhum produto cadastrado ainda.</p>
+
+    <% } %>
+</section>
+
+<%- include("partial/footer") %>

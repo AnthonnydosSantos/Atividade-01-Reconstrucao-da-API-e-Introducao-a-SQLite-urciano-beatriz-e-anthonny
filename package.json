@@ -3,7 +3,9 @@
     "better-sqlite3": "^13.0.3",
     "cors": "^2.8.6",
     "dotenv": "^18.0.6",
-    "express": "^5.3.0"
+    "ejs": "^7.0.1",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
@@ -13,8 +15,8 @@
   "description": "projeto: geek store\r Equipe: Anthonny, Beatriz e Urciano",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

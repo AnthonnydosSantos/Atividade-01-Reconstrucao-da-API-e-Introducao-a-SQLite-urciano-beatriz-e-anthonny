@@ -1,0 +1,54 @@
+
+<%- include("partial/header", {title: "Cadastro"}) %>
+
+<section class="form-card">
+  <p class="tag">FAÇA PARTE DA COMUNIDADE</p>
+  <h1>Criar conta</h1>
+
+  <% if (erro) { %>
+    <p class="alert"><%= erro %></p>
+  <% } %>
+
+  <form action="/cadastro" method="POST" class="form">
+    <label>
+      Nome completo
+      <input
+        type="text"
+        name="nome"
+        placeholder="Digite seu nome completo"
+        required
+      >
+    </label>
+
+    <label>
+      E-mail
+      <input
+        type="email"
+        name="email"
+        placeholder="seu@email.com"
+        required
+      >
+    </label>
+
+    <label>
+      Telefone
+      <input
+        type="tel"
+        name="telefone"
+        placeholder="(88) 99999-9999"
+      >
+    </label>
+
+    <button type="submit" class="btn">Criar conta</button>
+  </form>
+
+  <p class="muted">
+    Cadastre-se para acompanhar suas compras na Geek Store.
+  </p>
+
+  <p class="muted">
+    Já tem uma conta? <a href="/login">Entrar</a>
+  </p>
+</section>
+
+<%- include("partial/footer") %>
