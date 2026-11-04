@@ -30,7 +30,7 @@
             <%= produto.estoque ?? "Consulte disponibilidade" %>
         </p>
 
-        <% if (Number(produto.estoque) > 0) { %>
+        <% if (produto.disponibilidade && Number(produto.estoque) > 0) { %>
             <form
                 action="/carrinho/adicionar"
                 method="POST"

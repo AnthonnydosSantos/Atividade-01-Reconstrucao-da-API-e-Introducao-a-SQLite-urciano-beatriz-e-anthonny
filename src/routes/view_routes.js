@@ -10,6 +10,7 @@ const productQuery = `
     produto.nome,
     produto.detalhes AS descricao,
     produto.preco,
+    produto.disponibilidade,
     COALESCE(estoque.quantidade_atual, 0) AS estoque,
     categoria.id_categoria,
     categoria.nome AS categoria_nome
@@ -109,6 +110,10 @@ router.post("/carrinho/adicionar", (req, res, next) => {
 
   if (!produto) {
     return res.status(404).send("Produto não encontrado.");
+  }
+
+  if (!produto.disponibilidade) {
+    return res.status(409).send("Produto indisponível no momento.");
   }
 
   const carrinho = req.session.cart ?? {};
