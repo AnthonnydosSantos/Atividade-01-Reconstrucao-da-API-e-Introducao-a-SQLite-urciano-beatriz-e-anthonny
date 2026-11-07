@@ -54,6 +54,14 @@ test("creates and seeds all entities from the DER", () => {
       .get().total,
     339.6,
   );
+  assert.equal(
+    database
+      .prepare(
+        "SELECT COUNT(*) AS total FROM produto WHERE imagem IS NOT NULL AND imagem != ''",
+      )
+      .get().total,
+    6,
+  );
   assert.equal(Object.keys(runQueryExamples(database)).length, 5);
   assert.deepEqual(database.pragma("foreign_key_check"), []);
   database.close();
@@ -99,21 +107,35 @@ test("upgrades an existing database without losing its records", () => {
     INSERT INTO cliente VALUES (1, 'Cliente existente', 'cliente@email.com', NULL);
     INSERT INTO categoria VALUES (1, 'Jogos', NULL);
     INSERT INTO produto VALUES (1, 1, 'Produto existente', 1, 10, NULL);
+    INSERT INTO produto VALUES (2, 1, 'Mouse Gamer RGB', 1, 10, NULL);
     INSERT INTO pedido VALUES (1, 1, '2026-01-01', 'Pendente', 10);
   `);
 
   createSchema(database);
+  seedDatabase(database);
 
   assert.equal(
     database.prepare("SELECT nome FROM produto WHERE id_produto = 1").get()
       .nome,
     "Produto existente",
   );
+  assert.equal(
+    database
+      .prepare("SELECT imagem FROM produto WHERE id_produto = 2")
+      .get().imagem,
+    "/images/mouse-gamer.svg",
+  );
   assert.ok(
     database
       .prepare("PRAGMA table_info(produto)")
       .all()
       .some(({ name }) => name === "id_frete"),
+  );
+  assert.ok(
+    database
+      .prepare("PRAGMA table_info(produto)")
+      .all()
+      .some(({ name }) => name === "imagem"),
   );
   assert.ok(
     database

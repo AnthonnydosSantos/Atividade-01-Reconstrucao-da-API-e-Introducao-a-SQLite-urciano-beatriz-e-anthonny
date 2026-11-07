@@ -23,7 +23,11 @@
             <article class="card">
 
                 <div class="photo">
-                    🎁
+                    <% if (p.imagem) { %>
+                        <img src="<%= p.imagem %>" alt="<%= p.nome %>" loading="lazy">
+                    <% } else { %>
+                        <span aria-hidden="true">🎁</span>
+                    <% } %>
                 </div>
 
                 <div class="inside">

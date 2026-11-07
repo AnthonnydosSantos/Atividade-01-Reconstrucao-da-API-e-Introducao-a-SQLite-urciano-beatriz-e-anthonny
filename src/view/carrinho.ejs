@@ -11,6 +11,14 @@
   <section class="cart">
     <% itens.forEach(item => { %>
       <article class="cart-item">
+        <div class="cart-photo">
+          <% if (item.imagem) { %>
+            <img src="<%= item.imagem %>" alt="<%= item.nome %>" loading="lazy">
+          <% } else { %>
+            <span aria-hidden="true">🎁</span>
+          <% } %>
+        </div>
+
         <div>
           <h3><%= item.nome %></h3>
 
@@ -43,8 +51,20 @@
             value="<%= item.id %>"
           >
 
+          <label class="remove-quantity">
+            Quantidade para remover
+            <input
+              type="number"
+              name="quantidade"
+              min="1"
+              max="<%= item.quantidade %>"
+              value="1"
+              required
+            >
+          </label>
+
           <button type="submit" class="remove">
-            Remover
+            Remover quantidade
           </button>
         </form>
       </article>

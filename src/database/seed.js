@@ -28,12 +28,54 @@ const addresses = [
 ];
 
 const products = [
-  [1, "Jogo de Tabuleiro RPG", 1, 149.9, "Jogo para até 6 jogadores"],
-  [2, "Mouse Gamer RGB", 1, 89.9, "Mouse USB com iluminação RGB"],
-  [2, "Teclado Mecânico", 1, 219.9, "Teclado mecânico ABNT2"],
-  [3, "Action Figure Geek", 1, 129.9, "Miniatura colecionável"],
-  [4, "Camiseta Geek", 1, 59.9, "Camiseta estampada"],
-  [2, "Headset Gamer", 0, 179.9, "Headset com microfone"],
+  [
+    1,
+    "Jogo de Tabuleiro RPG",
+    1,
+    149.9,
+    "Jogo para até 6 jogadores",
+    "/images/jogo-rpg.svg",
+  ],
+  [
+    2,
+    "Mouse Gamer RGB",
+    1,
+    89.9,
+    "Mouse USB com iluminação RGB",
+    "/images/mouse-gamer.svg",
+  ],
+  [
+    2,
+    "Teclado Mecânico",
+    1,
+    219.9,
+    "Teclado mecânico ABNT2",
+    "/images/teclado-mecanico.svg",
+  ],
+  [
+    3,
+    "Action Figure Geek",
+    1,
+    129.9,
+    "Miniatura colecionável",
+    "/images/action-figure.svg",
+  ],
+  [
+    4,
+    "Camiseta Geek",
+    1,
+    59.9,
+    "Camiseta estampada",
+    "/images/camiseta-geek.svg",
+  ],
+  [
+    2,
+    "Headset Gamer",
+    0,
+    179.9,
+    "Headset com microfone",
+    "/images/headset-gamer.svg",
+  ],
 ];
 
 const orders = [
@@ -101,6 +143,16 @@ const insertRows = (database, table, columns, rows) => {
 };
 
 export const seedDatabase = (database) => {
+  const setProductImage = database.prepare(`
+    UPDATE produto
+    SET imagem = ?
+    WHERE nome = ? AND (imagem IS NULL OR imagem = '')
+  `);
+
+  for (const [, nome, , , , imagem] of products) {
+    setProductImage.run(imagem, nome);
+  }
+
   if (database.prepare("SELECT 1 FROM cliente LIMIT 1").get()) {
     return;
   }
@@ -123,7 +175,14 @@ export const seedDatabase = (database) => {
     insertRows(
       database,
       "produto",
-      ["id_categoria", "nome", "disponibilidade", "preco", "detalhes"],
+      [
+        "id_categoria",
+        "nome",
+        "disponibilidade",
+        "preco",
+        "detalhes",
+        "imagem",
+      ],
       products,
     );
 
@@ -138,7 +197,13 @@ export const seedDatabase = (database) => {
     insertRows(
       database,
       "item_pedido",
-      ["id_pedido", "id_produto", "quantidade", "preco_unitario", "preco_total"],
+      [
+        "id_pedido",
+        "id_produto",
+        "quantidade",
+        "preco_unitario",
+        "preco_total",
+      ],
       orderItems.map(([idPedido, idProduto, quantidade, precoUnitario]) => [
         idPedido,
         idProduto,
@@ -160,12 +225,24 @@ export const seedDatabase = (database) => {
     insertRows(
       database,
       "pagamento",
-      ["id_pedido", "forma_pagamento", "valor_pago", "pagamento_confirmado", "status_pagamento"],
+      [
+        "id_pedido",
+        "forma_pagamento",
+        "valor_pago",
+        "pagamento_confirmado",
+        "status_pagamento",
+      ],
       payments.map(([idPedido, formaPagamento, confirmado, status]) => {
         const total = database
           .prepare("SELECT total FROM pedido WHERE id_pedido = ?")
           .get(idPedido).total;
-        return [idPedido, formaPagamento, status === "Pendente" ? 0 : total, confirmado, status];
+        return [
+          idPedido,
+          formaPagamento,
+          status === "Pendente" ? 0 : total,
+          confirmado,
+          status,
+        ];
       }),
     );
     insertRows(

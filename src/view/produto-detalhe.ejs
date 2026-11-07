@@ -5,7 +5,11 @@
 
 <section class="detail">
     <div class="detail-photo">
-        🎁
+        <% if (produto.imagem) { %>
+            <img src="<%= produto.imagem %>" alt="<%= produto.nome %>">
+        <% } else { %>
+            <span aria-hidden="true">🎁</span>
+        <% } %>
     </div>
 
     <div>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-labelledby="title">
+  <title id="title">Teclado mecânico</title>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#eee9ff"/>
+      <stop offset="1" stop-color="#dff8f3"/>
+    </linearGradient>
+    <linearGradient id="keys" x2="1">
+      <stop stop-color="#a866ff"/>
+      <stop offset=".5" stop-color="#20b8a6"/>
+      <stop offset="1" stop-color="#ff70b7"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="28" fill="url(#bg)"/>
+  <g transform="rotate(-8 240 182)">
+    <rect x="72" y="104" width="336" height="158" rx="20" fill="#29263f" stroke="#fff" stroke-width="7"/>
+    <g fill="#4a4562" stroke="#211f34" stroke-width="3">
+      <rect x="94" y="123" width="36" height="30" rx="6"/><rect x="137" y="123" width="36" height="30" rx="6"/><rect x="180" y="123" width="36" height="30" rx="6"/><rect x="223" y="123" width="36" height="30" rx="6"/><rect x="266" y="123" width="36" height="30" rx="6"/><rect x="309" y="123" width="36" height="30" rx="6"/><rect x="352" y="123" width="36" height="30" rx="6"/>
+      <rect x="94" y="163" width="43" height="30" rx="6"/><rect x="144" y="163" width="36" height="30" rx="6"/><rect x="187" y="163" width="36" height="30" rx="6"/><rect x="230" y="163" width="36" height="30" rx="6"/><rect x="273" y="163" width="36" height="30" rx="6"/><rect x="316" y="163" width="72" height="30" rx="6"/>
+      <rect x="94" y="203" width="53" height="30" rx="6"/><rect x="154" y="203" width="36" height="30" rx="6"/><rect x="197" y="203" width="116" height="30" rx="6"/><rect x="320" y="203" width="68" height="30" rx="6"/>
+    </g>
+    <path d="M96 247h288" stroke="url(#keys)" stroke-linecap="round" stroke-width="7"/>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-labelledby="title">
+  <title id="title">Jogo de tabuleiro de RPG</title>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#eee9ff"/>
+      <stop offset="1" stop-color="#dff8f3"/>
+    </linearGradient>
+    <linearGradient id="board" x2="1" y2="1">
+      <stop stop-color="#6543ad"/>
+      <stop offset="1" stop-color="#29234a"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="28" fill="url(#bg)"/>
+  <path d="m99 99 180-45 104 70-180 47z" fill="#b9a2e8"/>
+  <path d="m99 99 104 72v122L99 220z" fill="#392b68"/>
+  <path d="m203 171 180-47v120l-180 49z" fill="url(#board)"/>
+  <path d="m138 118 140-35 63 42-140 37z" fill="#d9c9ff"/>
+  <path d="m175 214 28 20 29-8-28-20zM238 197l28 20 29-8-28-20zM302 180l28 20 29-8-28-20zM175 260l28 20 29-8-28-20zM238 243l28 20 29-8-28-20z" fill="#20b8a6"/>
+  <path d="m266 102 25 15-8 29-28 7-19-23 11-27z" fill="#f3bd55" stroke="#fff" stroke-width="5"/>
+  <circle cx="145" cy="197" r="13" fill="#f3bd55"/>
+  <circle cx="331" cy="151" r="13" fill="#f3bd55"/>
+</svg>

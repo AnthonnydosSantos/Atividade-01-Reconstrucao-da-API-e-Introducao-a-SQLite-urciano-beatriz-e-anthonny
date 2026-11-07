@@ -11,6 +11,7 @@ const productQuery = `
     produto.detalhes AS descricao,
     produto.preco,
     produto.disponibilidade,
+    produto.imagem,
     COALESCE(estoque.quantidade_atual, 0) AS estoque,
     categoria.id_categoria,
     categoria.nome AS categoria_nome
@@ -128,6 +129,46 @@ router.post("/carrinho/adicionar", (req, res, next) => {
     ...carrinho,
     [produtoId]: novaQuantidade,
   };
+
+  req.session.save((erro) => {
+    if (erro) {
+      return next(erro);
+    }
+
+    return res.redirect(303, "/carrinho");
+  });
+});
+
+// Remover produto do carrinho
+router.post("/carrinho/remover", (req, res, next) => {
+  const produtoId = Number(req.body.produto_id);
+  const quantidade = Number(req.body.quantidade);
+
+  if (
+    !Number.isSafeInteger(produtoId) ||
+    produtoId < 1 ||
+    !Number.isSafeInteger(quantidade) ||
+    quantidade < 1
+  ) {
+    return res.status(400).send("Produto ou quantidade inválidos.");
+  }
+
+  const carrinho = { ...(req.session.cart ?? {}) };
+  const quantidadeAtual = Number(carrinho[produtoId] ?? 0);
+
+  if (!Number.isSafeInteger(quantidadeAtual) || quantidadeAtual < 1) {
+    return res.status(404).send("Produto não encontrado no carrinho.");
+  }
+
+  const quantidadeRestante = quantidadeAtual - quantidade;
+
+  if (quantidadeRestante > 0) {
+    carrinho[produtoId] = quantidadeRestante;
+  } else {
+    delete carrinho[produtoId];
+  }
+
+  req.session.cart = carrinho;
 
   req.session.save((erro) => {
     if (erro) {

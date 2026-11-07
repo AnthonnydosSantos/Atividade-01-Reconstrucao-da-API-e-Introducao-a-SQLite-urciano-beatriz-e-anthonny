@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-labelledby="title">
+  <title id="title">Action figure colecionável</title>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#eee9ff"/>
+      <stop offset="1" stop-color="#dff8f3"/>
+    </linearGradient>
+    <linearGradient id="cape" x2="1" y2="1">
+      <stop stop-color="#8f65d3"/>
+      <stop offset="1" stop-color="#493583"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="28" fill="url(#bg)"/>
+  <ellipse cx="240" cy="306" rx="100" ry="17" fill="#bcb2d8" opacity=".55"/>
+  <path d="m198 149-66 132 69 14 39-77 43 77 69-14-67-132z" fill="url(#cape)" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M199 154h82l24 83-47 42-57-42z" fill="#20b8a6" stroke="#fff" stroke-width="6"/>
+  <circle cx="240" cy="112" r="48" fill="#f1c79f" stroke="#fff" stroke-width="6"/>
+  <path d="m194 109 10-53 34 20 35-20 13 53-18-14-17 13-16-13-24 14z" fill="#f3bd55"/>
+  <path d="m217 112 15 7m31-7-15 7" stroke="#29263f" stroke-linecap="round" stroke-width="6"/>
+  <path d="M229 134q11 9 22 0" fill="none" stroke="#a95758" stroke-linecap="round" stroke-width="5"/>
+  <path d="m206 181-37 60m105-60 37 60" stroke="#f1c79f" stroke-linecap="round" stroke-width="17"/>
+  <path d="m225 266-8 39m38-39 8 39" stroke="#29263f" stroke-linecap="round" stroke-width="17"/>
+  <path d="M202 305h-22m118 0h-22" stroke="#f3bd55" stroke-linecap="round" stroke-width="12"/>
+</svg>

@@ -46,6 +46,7 @@ const schema = `
       CHECK (disponibilidade IN (0, 1)),
     preco REAL NOT NULL CHECK (preco >= 0),
     detalhes TEXT,
+    imagem TEXT,
     FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria),
     FOREIGN KEY (id_frete) REFERENCES frete(id_frete)
   );
@@ -147,6 +148,7 @@ export const createSchema = (database) => {
       "id_frete",
       "INTEGER REFERENCES frete(id_frete)",
     );
+    ensureColumn(database, "produto", "imagem", "TEXT");
     ensureColumn(
       database,
       "pedido",

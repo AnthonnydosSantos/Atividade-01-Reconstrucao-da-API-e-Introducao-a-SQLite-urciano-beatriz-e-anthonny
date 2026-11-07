@@ -171,6 +171,22 @@ a.card:hover {
   font-size: 3.5rem;
 }
 
+.photo {
+  aspect-ratio: 4 / 3;
+}
+
+.photo img,
+.detail-photo img,
+.cart-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.photo img {
+  padding: 1rem;
+}
+
 .inside {
   padding: 1.25rem;
 }
@@ -284,9 +300,22 @@ input:focus {
 }
 
 .detail-photo {
+  height: 300px;
   min-height: 300px;
   border-radius: 0.8rem;
   font-size: 5rem;
+}
+
+.cart-photo {
+  display: grid;
+  width: 96px;
+  min-width: 96px;
+  height: 96px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, #eee9ff, #dff8f3);
+  font-size: 2rem;
 }
 
 .cart {
@@ -315,6 +344,18 @@ input:focus {
   color: #a42d40;
   cursor: pointer;
   font: inherit;
+}
+
+.remove-quantity {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.remove-quantity input {
+  width: 6rem;
 }
 
 .cart-summary {
@@ -377,6 +418,7 @@ body > footer p {
   }
 
   .detail-photo {
+    height: 200px;
     min-height: 200px;
   }
 

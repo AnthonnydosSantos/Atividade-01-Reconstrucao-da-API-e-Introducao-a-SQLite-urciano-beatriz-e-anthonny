@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-labelledby="title">
+  <title id="title">Mouse gamer RGB</title>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#eee9ff"/>
+      <stop offset="1" stop-color="#dff8f3"/>
+    </linearGradient>
+    <linearGradient id="shell" x2="1" y2="1">
+      <stop stop-color="#55506d"/>
+      <stop offset="1" stop-color="#242238"/>
+    </linearGradient>
+    <linearGradient id="rgb">
+      <stop stop-color="#a866ff"/>
+      <stop offset=".5" stop-color="#21d8c0"/>
+      <stop offset="1" stop-color="#ff70b7"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="28" fill="url(#bg)"/>
+  <ellipse cx="240" cy="283" rx="119" ry="22" fill="#bcb2d8" opacity=".55"/>
+  <path d="M240 67c-60 0-103 43-103 104v62c0 52 43 90 103 90s103-38 103-90v-62c0-61-43-104-103-104Z" fill="url(#shell)" stroke="#fff" stroke-width="7"/>
+  <path d="M240 68v113m-102-11h204" fill="none" stroke="#938ca7" stroke-width="6"/>
+  <path d="M240 75c-50 0-84 34-84 88v13h84z" fill="#38344d"/>
+  <path d="M240 75c50 0 84 34 84 88v13h-84z" fill="#302d43"/>
+  <rect x="231" y="104" width="18" height="39" rx="9" fill="url(#rgb)"/>
+  <path d="M160 251c31 24 61 36 80 36s49-12 80-36" fill="none" stroke="url(#rgb)" stroke-linecap="round" stroke-width="10"/>
+  <path d="M240 286v27" stroke="#242238" stroke-linecap="round" stroke-width="8"/>
+</svg>
